@@ -1,5 +1,5 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using System;
+using System.Diagnostics;
 
 int zahl1, zahl2, geschätzterWertI, ergebnis, richtigeAntwort = 0, falscheAntwort = 0;
 
@@ -27,6 +27,10 @@ void neueZahlen()
 
 
 }
+
+Stopwatch stopwatch = new Stopwatch();
+stopwatch.Start();
+
 for (int i = 0; i < 10; i++)
 {
 
@@ -48,6 +52,11 @@ for (int i = 0; i < 10; i++)
     Console.WriteLine("Bisher haben Sie {0} richtige, {1} falsche Antwort gegeben.", richtigeAntwort, falscheAntwort);
 }
 
+
+stopwatch.Stop();
+Console.WriteLine("--------------------------------------");
+Console.WriteLine("Zeitaufwand: {0}", stopwatch.Elapsed);
+Console.WriteLine("--------------------------------------");
 
 
 
