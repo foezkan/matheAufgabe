@@ -1,7 +1,28 @@
 ﻿using System;
 using System.Diagnostics;
 
-int zahl1, zahl2, geschätzterWertI, ergebnis, richtigeAntwort = 0, falscheAntwort = 0;
+int zahl1, zahl2, geschätzterWertI, ergebnis, richtigeAntwort = 0, falscheAntwort = 0, rechnungenZahlI=0;
+
+wieViel();
+void wieViel()
+{
+    Console.WriteLine("----------------------------------------------------");
+    Console.WriteLine("Bitte schreiben Sie, wie viele Sie rechnen möchten");
+
+    string rechnungenZahlS = Console.ReadLine();
+
+    if (int.TryParse(rechnungenZahlS, out rechnungenZahlI))
+    {
+
+    }
+    else
+    {
+        Console.WriteLine("Der eingegebene Wert hat kein Zahlenformat.");
+        wieViel();
+    }
+
+
+}
 
 
 void neueZahlen()
@@ -28,10 +49,12 @@ void neueZahlen()
 
 }
 
+
+
 Stopwatch stopwatch = new Stopwatch();
 stopwatch.Start();
 
-for (int i = 0; i < 10; i++)
+for (int i= 0; i < rechnungenZahlI; i++)
 {
 
     neueZahlen();
@@ -56,7 +79,7 @@ for (int i = 0; i < 10; i++)
 stopwatch.Stop();
 Console.WriteLine("--------------------------------------");
 Console.WriteLine("Zeitaufwand: {0}", stopwatch.Elapsed);
-Console.WriteLine("--------------------------------------");
+Console.WriteLine("---------------------------------------");
 
 
 
