@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Diagnostics;
 
-int zahl1, zahl2, geschätzterWertI, ergebnis, richtigeAntwort = 0, falscheAntwort = 0, rechnungenZahlI=0;
+int zahl1, zahl2, zufällig, geschätzterWertI, ergebnis, richtigeAntwort = 0, falscheAntwort = 0, rechnungenZahlI=0;
 
 wieViel();
+Stopwatch stopwatch = new Stopwatch();
+
+
+
 void wieViel()
 {
     Console.WriteLine("----------------------------------------------------");
@@ -20,66 +24,127 @@ void wieViel()
         Console.WriteLine("Der eingegebene Wert hat kein Zahlenformat.");
         wieViel();
     }
-
-
 }
 
-
-void neueZahlen()
-{
-    Random neueZahl = new Random();
-    zahl1 = neueZahl.Next(0, 101);
-    zahl2 = neueZahl.Next(0, 101);
-    ergebnis = zahl1 - zahl2;
-    Console.WriteLine("----------------------------------------------------");
-    Console.WriteLine("Bitte schreiben Sie das Ergebnis der Operation unten");
-    Console.Write(zahl1 + "-" + zahl2 + "=");
-
-    string geschätzterWertS = Console.ReadLine();
-
-    if (int.TryParse(geschätzterWertS, out geschätzterWertI))
-    {
-
-    }
-    else
-    {
-        Console.WriteLine("Der eingegebene Wert hat kein Zahlenformat.");
-    }
-
-
-}
-
-
-
-Stopwatch stopwatch = new Stopwatch();
+Random neueZahl = new Random();
+zufällig = neueZahl.Next(0,3);
 stopwatch.Start();
-
-for (int i= 0; i < rechnungenZahlI; i++)
+for (int i = 0; i < rechnungenZahlI; i++)
 {
 
-    neueZahlen();
-    
-
-    if (geschätzterWertI == ergebnis)
+    zufällig = neueZahl.Next(0, 3);
+    switch (zufällig)
     {
-        richtigeAntwort++;
-        Console.WriteLine("Glückwunsch, richtige antwort");
+        case 0: // +
+            zahl1 = neueZahl.Next(0, 101);
+            zahl2 = neueZahl.Next(0, 101);
+            ergebnis = zahl1 + zahl2;
+            Console.WriteLine("----------------------------------------------------");
+            Console.WriteLine("Bitte schreiben Sie das Ergebnis der Operation unten");
+            Console.Write(zahl1 + "+" + zahl2 + "=");
+
+            string geschätzterWertS = Console.ReadLine();
+
+            if (int.TryParse(geschätzterWertS, out geschätzterWertI))
+            {
+                if (geschätzterWertI == ergebnis)
+                {
+                    richtigeAntwort++;
+                    Console.WriteLine("Glückwunsch, richtige antwort");
+
+                }
+                else
+                {
+                    falscheAntwort++;
+                    Console.WriteLine("Leider, falsche Antwort");
+
+                }
+                Console.WriteLine("Bisher haben Sie {0} richtige, {1} falsche Antwort gegeben.", richtigeAntwort, falscheAntwort);
+            
+    }
+            else
+            {
+                Console.WriteLine("Der eingegebene Wert hat kein Zahlenformat.");
+                Console.WriteLine("Bitte versuchen Sie es erneut.");
+                goto case 0;
+            }
+            break;
+        case 1:// -
+            zahl1 = neueZahl.Next(0, 101);
+            zahl2 = neueZahl.Next(0, 101);
+            ergebnis = zahl1 - zahl2;
+            Console.WriteLine("----------------------------------------------------");
+            Console.WriteLine("Bitte schreiben Sie das Ergebnis der Operation unten");
+            Console.Write(zahl1 + "-" + zahl2 + "=");
+
+            geschätzterWertS = Console.ReadLine();
+
+            if (int.TryParse(geschätzterWertS, out geschätzterWertI))
+            {
+                if (geschätzterWertI == ergebnis)
+                {
+                    richtigeAntwort++;
+                    Console.WriteLine("Glückwunsch, richtige antwort");
+
+                }
+                else
+                {
+                    falscheAntwort++;
+                    Console.WriteLine("Leider, falsche Antwort");
+
+                }
+                Console.WriteLine("Bisher haben Sie {0} richtige, {1} falsche Antwort gegeben.", richtigeAntwort, falscheAntwort);
+            }
+            else
+            {
+                Console.WriteLine("Der eingegebene Wert hat kein Zahlenformat.");
+                Console.WriteLine("Bitte versuchen Sie es erneut.");
+                goto case 1;
+            }
+            break;
+
+        case 2: // *
+            zahl1 = neueZahl.Next(0, 13);
+            zahl2 = neueZahl.Next(0, 13);
+            ergebnis = zahl1 * zahl2;
+            Console.WriteLine("----------------------------------------------------");
+            Console.WriteLine("Bitte schreiben Sie das Ergebnis der Operation unten");
+            Console.Write(zahl1 + "x" + zahl2 + "=");
+
+            geschätzterWertS = Console.ReadLine();
+
+            if (int.TryParse(geschätzterWertS, out geschätzterWertI))
+            {
+                if (geschätzterWertI == ergebnis)
+                {
+                    richtigeAntwort++;
+                    Console.WriteLine("Glückwunsch, richtige antwort");
+
+                }
+                else
+                {
+                    falscheAntwort++;
+                    Console.WriteLine("Leider, falsche Antwort");
+
+                }
+                Console.WriteLine("Bisher haben Sie {0} richtige, {1} falsche Antwort gegeben.", richtigeAntwort, falscheAntwort);
+            }
+            else
+            {
+                Console.WriteLine("Der eingegebene Wert hat kein Zahlenformat.");
+                Console.WriteLine("Bitte versuchen Sie es erneut.");
+                goto case 2;
+            }
+            break;
 
     }
-    else
-    {
-        falscheAntwort++;
-        Console.WriteLine("Leider, falsche Antwort");
-
-    }
-    Console.WriteLine("Bisher haben Sie {0} richtige, {1} falsche Antwort gegeben.", richtigeAntwort, falscheAntwort);
 }
+    stopwatch.Stop();
+    Console.WriteLine("--------------------------------------");
+    Console.WriteLine("Zeitaufwand: {0}", stopwatch.Elapsed.TotalSeconds);
+    Console.WriteLine("---------------------------------------");
 
 
-stopwatch.Stop();
-Console.WriteLine("--------------------------------------");
-Console.WriteLine("Zeitaufwand: {0}", stopwatch.Elapsed);
-Console.WriteLine("---------------------------------------");
 
 
 
