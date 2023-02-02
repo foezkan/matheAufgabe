@@ -1,14 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
 
-int zahl1, zahl2, zufällig, geschätzterWertI, ergebnis, richtigeAntwort = 0, falscheAntwort = 0, rechnungenZahlI=0;
+int s1=0, zahl1, zahl2, zufällig, geschätzterWertI, ergebnis, richtigeAntwort = 0, falscheAntwort = 0, rechnungenZahlI=0;
 
-wieViel();
-Stopwatch stopwatch = new Stopwatch();
-
-
-
-void wieViel()
+while (s1 < 1)
 {
     Console.WriteLine("----------------------------------------------------");
     Console.WriteLine("Bitte schreiben Sie, wie viele Sie rechnen möchten");
@@ -17,14 +12,39 @@ void wieViel()
 
     if (int.TryParse(rechnungenZahlS, out rechnungenZahlI))
     {
-
+        s1++;
     }
     else
     {
         Console.WriteLine("Der eingegebene Wert hat kein Zahlenformat.");
-        wieViel();
+
     }
 }
+
+
+
+
+Stopwatch stopwatch = new Stopwatch();
+
+
+
+//void wieViel()
+//{
+//    Console.WriteLine("----------------------------------------------------");
+//    Console.WriteLine("Bitte schreiben Sie, wie viele Sie rechnen möchten");
+
+//    string rechnungenZahlS = Console.ReadLine();
+
+//    if (int.TryParse(rechnungenZahlS, out rechnungenZahlI))
+//    {
+
+//    }
+//    else
+//    {
+//        Console.WriteLine("Der eingegebene Wert hat kein Zahlenformat.");
+//        wieViel();
+//    }
+//}
 
 Random neueZahl = new Random();
 zufällig = neueZahl.Next(0,3);
