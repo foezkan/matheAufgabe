@@ -17,7 +17,6 @@ while (s1 < 1)
     else
     {
         zahlenFormatErklarung();
-
     }
 }
 
@@ -39,7 +38,10 @@ void ergebnisErklarung()
 }
 void ifMethod()
 {
-    EndOfLoop:
+    //EndOfLoop:
+    bool inputIsValid = false;
+    while (!inputIsValid)
+    { 
     string geschätzterWertS = Console.ReadLine();
 
     if (int.TryParse(geschätzterWertS, out geschätzterWertI))
@@ -56,14 +58,17 @@ void ifMethod()
             Console.WriteLine("Leider, falsche Antwort");
 
         }
+        inputIsValid= true;
+        Console.Clear();
         Console.WriteLine("Bisher haben Sie {0} richtige, {1} falsche Antwort gegeben.", richtigeAntwort, falscheAntwort);
     }
     else
     {
         zahlenFormatErklarung();
-        goto EndOfLoop;
+        //goto EndOfLoop;
 
     }
+}
 }
 void randomZahl()
 {
